@@ -1,0 +1,24 @@
+device : cuda
+model_name : Tiny_CD
+dataset_name : MNCD256
+data_type : HG #cloud is another option
+dataset_path : HZDR-FWGEL/MineNetCD256
+input_nc : 3
+num_classes : 2
+push_to_hub : False
+
+train:
+  epochs : 100
+  batch_size : 32
+  lr : 0.00356799066427741
+  weight_decay: 0.009449677083344786
+  loss: BCE
+  snapshots_dir : ./checkpoints/
+  optim : AdamW
+  save_intervals : 10
+eval :
+  batch_size : 32
+test:
+  batch_size : 32
+  checkpoint : checkpoints/GVLM256/DMINet/"epoch 99/pytorch_model.bin
+  save_path : ./results/

@@ -1,0 +1,29 @@
+device : cuda
+model_name : MineNetCD
+dataset_name : MNCD256
+data_type : HG #HG is another option
+dataset_path : ericyu/MCD_Test
+input_nc : 3
+num_classes : 2
+push_to_hub : False
+transform: ["normalize"]
+
+model:
+  type: HG
+  backbone_type: Swin_Diff_T
+train:
+  epochs : 100
+  batch_size : 4
+  lr : 0.0001
+  loss: integrated
+  snapshots_dir : ./checkpoints/
+  optim : Adam
+  save_intervals : 10
+eval :
+  batch_size : 4
+test:
+  batch_size : 4
+  use_external_checkpoint: True
+  external_checkpoint : ericyu/minenetcd-upernet-Swin-Diff-T-Pretrained-ChannelMixing-Dropout
+  checkpoint_type: HG
+  save_path : ./results/

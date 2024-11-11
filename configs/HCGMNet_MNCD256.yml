@@ -1,0 +1,24 @@
+device : cuda
+model_name : HCGMNet
+dataset_name : MNCD256
+data_type : HG #cloud is another option
+dataset_path : HZDR-FWGEL/MineNetCD256
+input_nc : 3
+num_classes : 2
+push_to_hub : False
+
+train:
+  epochs : 100
+  batch_size : 32
+  lr : 0.0005
+  loss: BCE
+  snapshots_dir : ./checkpoints/
+  optim : AdamW
+  weight_decay: 0.0025
+  save_intervals : 10
+eval :
+  batch_size : 10
+test:
+  batch_size : 10
+  checkpoint : checkpoints/GVLM256/DMINet/"epoch 99/pytorch_model.bin
+  save_path : ./results/

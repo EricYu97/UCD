@@ -1,0 +1,23 @@
+device : cuda
+model_name : ChangeFormer
+dataset_name : CLCD256
+data_type : cloud #cloud is another option
+dataset_path : ericyu/CLCD_Cropped_256
+input_nc : 3
+num_classes : 2
+push_to_hub : False
+
+train:
+  epochs : 100
+  batch_size : 32
+  lr : 0.0001
+  loss: CrossEntropy
+  snapshots_dir : ./checkpoints/
+  optim : Adam
+  save_intervals : 10
+eval :
+  batch_size : 32
+test:
+  batch_size : 32
+  checkpoint : checkpoints/GVLM256/DMINet/"epoch 99/pytorch_model.bin
+  save_path : ./results/

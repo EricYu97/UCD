@@ -1,0 +1,13 @@
+datasets/
+.DS_store
+*.pyc
+checkpoints/
+results/
+*.out
+__pycache__
+.bak
+results_v2
+*.zip
+results
+test_predictions
+*.sh
